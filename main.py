@@ -1,3 +1,5 @@
+###ATTENTION, POUR RUN IL FAUT LE FAIRE DANS LE TERMINAL ET FAIRE sudo python3 main.py
+
 import pygame
 import random
 import sys
