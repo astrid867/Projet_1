@@ -50,12 +50,13 @@ def create_coins(board):
     # TODO: Retirer les coins aux positions centrales, en utilisant la variable 'center_pos'.
     for i in range(len(center_pos)):
         if coins.count(center_pos[i])!=0:
-            coins.remove(center_pos[i])
+            coins.remove(center_pos[i])      #LES ENLÈVE PAS J'AI L'IMPRESSION, MAIS SONT PAS ENLEVÉES DANS LES GIFS....
     return coins
 
 def create_special_coins(board):
     special_coins = []
 
     # TODO: Ajouter des coins aux positions spéciales, en utilisant la variable 'special_coins_pos'.
-    
+    for i in range(len(special_coins_pos)):
+        special_coins.append(special_coins_pos[i])
     return special_coins
