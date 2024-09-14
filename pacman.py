@@ -46,14 +46,16 @@ class PacMan:
             x,y = self.direction
             # TODO: Calculer les nouvelles coordonnées X et Y en fonction de la direction
             # Ajouter la direction à la position actuelle (self.x, self.y) pour obtenir la nouvelle position.
-            if x==1 :
-                self.x += 1
-            elif x==-1 :
-                self.x -= 1
-            if y==1 :
-                self.y += 1
-            elif y==-1 :
-                self.y -= 1
+                                                    # if x==1 :
+                                                    #     self.x += 1
+                                                    # elif x==-1 :
+      #je pense que cette partie est pas optimale   #     self.x -= 1
+                                                    # if y==1 :
+                                                    #     self.y += 1
+                                                    # elif y==-1 :
+                                                    #     self.y -= 1
+            self.x += x
+            self.y += y
             
             # TODO: Vérifier si la nouvelle position entre en collision avec un mur
             # Utiliser `self.board[new_y][new_x]` pour voir si la case correspond à un chemin (0) ou à un mur (1).
@@ -67,6 +69,8 @@ class PacMan:
                 # TODO: Mettre à jour la position du rectangle de Pac-Man dans l'interface
                 # Mettre à jour `self.rect.topleft` avec la nouvelle position à l'écran pour déplacer l'affichage de Pac-Man.
                 self.rect.topleft = self.screen_pos
+            else:
+                self.stop()
                 
                 
     def set_direction(self, direction):

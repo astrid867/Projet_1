@@ -97,34 +97,34 @@ class Game:
             # TODO: Vérifiez si Pac-Man peut se déplacer à droite sans entrer en collision avec self.check_collision((1, 0))
                 # TODO: Si le déplacement est possible, définissez la nouvelle direction de Pac-Man vers la droite avec self.pacman.set_direction((1, 0))
         if event.key == pygame.K_RIGHT :
-            # if self.check_collision((1,0)) :  PAS ENCORE IMPLÉMENTÉE
-            self.pacman.set_direction((1,0))
+            if self.check_collision((1,0)) :
+                self.pacman.set_direction((1,0))
             
         # TODO: Vérifiez si la touche pressée est la flèche gauche
             # TODO: Vérifiez si Pac-Man peut se déplacer à gauche sans entrer en collision
                 # TODO: Si le déplacement est possible, définissez la nouvelle direction de Pac-Man vers la gauche
         if event.key == pygame.K_LEFT :
-            # if self.check_collision((-1,0)) :  PAS ENCORE IMPLÉMENTÉE
-            self.pacman.set_direction((-1,0))
+            if self.check_collision((-1,0)) :
+                self.pacman.set_direction((-1,0))
             
         # TODO: Vérifiez si la touche pressée est la flèche vers le haut
             # TODO: Vérifiez si Pac-Man peut se déplacer vers le haut sans entrer en collision
                 # TODO: Si le déplacement est possible, définissez la nouvelle direction de Pac-Man vers le haut
         if event.key == pygame.K_UP :
-            # if self.check_collision((0,-1)) :  PAS ENCORE IMPLÉMENTÉE
-            self.pacman.set_direction((0,-1))
+            if self.check_collision((0,-1)) :
+                self.pacman.set_direction((0,-1))
             
         # TODO: Vérifiez si la touche pressée est la flèche vers le bas
             # TODO: Vérifiez si Pac-Man peut se déplacer vers le bas sans entrer en collision
                 # TODO: Si le déplacement est possible, définissez la nouvelle direction de Pac-Man vers le bas
         if event.key == pygame.K_DOWN :
-            # if self.check_collision((0,1)) :  PAS ENCORE IMPLÉMENTÉE
-            self.pacman.set_direction((0,1))    
+            if self.check_collision((0,1)) :
+                self.pacman.set_direction((0,1))    
 
     def check_collision(self, direction):
         pass
         # TODO: Extraire les coordonnées de déplacement de la direction (dx, dy)
-        dx, dy = self.direction
+        dx, dy = direction
         
         # TODO: Calculer la nouvelle position de Pac-Man après le déplacement (new_x, new_y) avec la formule new_x = self.pacman.x + dx
         new_x = self.pacman.x + dx
