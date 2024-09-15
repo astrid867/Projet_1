@@ -122,7 +122,6 @@ class Game:
                 self.pacman.set_direction((0,1))    
 
     def check_collision(self, direction):
-        pass
         # TODO: Extraire les coordonnées de déplacement de la direction (dx, dy)
         dx, dy = direction
         
@@ -135,6 +134,14 @@ class Game:
             return True         #Il n'y a pas de collision
         else:
             return False        #Il y a collision
+        
+        #Check collisions pour ghost arrangée pour pacman -> marche encore moins bien qu'au dessus.....
+        # for x in range(int(self.pacman.rect.left / TILE_WIDTH), int(self.pacman.rect.right / TILE_WIDTH) + 1):
+        #     for y in range(int(self.pacman.rect.top / TILE_HEIGHT), int(self.pacman.rect.bottom / TILE_HEIGHT) + 1):
+        #         if 0 <= x < len(self.pacman.board[0]) and 0 <= y < len(self.pacman.board):
+        #             if self.pacman.board[y][x] == 1: # Vérifier si le fantôme touche un mur
+        #                 return False
+        # return True
         
     def update(self):
         for ghost in self.ghosts:
