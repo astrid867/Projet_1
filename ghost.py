@@ -81,6 +81,7 @@ class Ghost:
         
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
+            
     #je comprends pas pourquoi on fait ça pour chaque direction puisqu'on va checker après pour une seule qu'on aura choisie
             
             
