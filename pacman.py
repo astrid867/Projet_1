@@ -51,7 +51,7 @@ class PacMan:
             
             # TODO: Vérifier si la nouvelle position entre en collision avec un mur
             # Utiliser `self.board[new_y][new_x]` pour voir si la case correspond à un chemin (0) ou à un mur (1).
-            if self.board[self.x][self.y]==0 :
+            if self.board[self.y][self.x]==0 :
                 # TODO: Mettre à jour la position de Pac-Man si aucun mur n'est rencontré
                 self.screen_pos = (self.x,self.y) #Pourquoi on le fait ici puisqu'on le change apres??
                 self.rect = pygame.Rect(self.screen_pos, PACMAN_SIZE)

@@ -130,7 +130,7 @@ class Game:
         new_y = self.pacman.y + dy
         # TODO: Vérifier si la nouvelle position est un chemin valide ou un mur
         # Utiliser la grille (`self.board`) pour déterminer si la case est un chemin (0) ou un mur (1). return True si c'est un chemin, False si c'est un mur.
-        if self.board[new_x][new_y]==0:
+        if self.board[new_y][new_x]==0:   #ATTENTION : y c'est les lignes et x les colonnes
             return True         #Il n'y a pas de collision
         else:
             return False        #Il y a collision
