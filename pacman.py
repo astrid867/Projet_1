@@ -46,14 +46,16 @@ class PacMan:
             x,y = self.direction
             # TODO: Calculer les nouvelles coordonnées X et Y en fonction de la direction
             # Ajouter la direction à la position actuelle (self.x, self.y) pour obtenir la nouvelle position.
-            self.x += x
-            self.y += y
+            next_x = self.x+x
+            next_y = self.y +y
             
             # TODO: Vérifier si la nouvelle position entre en collision avec un mur
             # Utiliser `self.board[new_y][new_x]` pour voir si la case correspond à un chemin (0) ou à un mur (1).
-            if self.board[self.y][self.x]==0 :
+            if self.board[next_y][next_x]==0 :
+                self.x = next_x
+                self.y = next_y
                 # TODO: Mettre à jour la position de Pac-Man si aucun mur n'est rencontré
-                self.screen_pos = (self.x,self.y) #Pourquoi on le fait ici puisqu'on le change apres??
+                self.screen_pos = (self.x,self.y)
                 self.rect = pygame.Rect(self.screen_pos, PACMAN_SIZE)
                 # TODO: Convertir les nouvelles coordonnées de la grille en position à l'écran
                 # Utiliser une fonction comme `grid_to_screen` pour obtenir les coordonnées sur l'écran.
