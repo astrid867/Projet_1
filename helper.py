@@ -34,7 +34,7 @@ def create_coins(board):
 
     # TODO: Ajouter la position de toutes les cases '0' à la variable coins. Pour ajouter un élément, vous pouvez utiliser l'expression suivante :
     # coins.append((x, y))
-    # en remplacant x et y par la position. Notez que le premier coin est à la position (0, 0)
+    # en remplacant x et y par la position. Notez que le premier coin est à la position (1, 1)
     laby = create_board()
     for i in range(len(laby)):  #lignes du labyrinthe
         for j in range(len(laby[i])):  #colonnes du labyrinthe
