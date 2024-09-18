@@ -128,20 +128,13 @@ class Game:
         # TODO: Calculer la nouvelle position de Pac-Man après le déplacement (new_x, new_y) avec la formule new_x = self.pacman.x + dx
         new_x = self.pacman.x + dx
         new_y = self.pacman.y + dy
+        
         # TODO: Vérifier si la nouvelle position est un chemin valide ou un mur
         # Utiliser la grille (`self.board`) pour déterminer si la case est un chemin (0) ou un mur (1). return True si c'est un chemin, False si c'est un mur.
         if self.board[new_y][new_x]==0:   #ATTENTION : y c'est les lignes et x les colonnes
             return True         #Il n'y a pas de collision
         else:
             return False        #Il y a collision
-        
-        #Check collisions pour ghost arrangée pour pacman -> marche encore moins bien qu'au dessus.....
-        # for x in range(int(self.pacman.rect.left / TILE_WIDTH), int(self.pacman.rect.right / TILE_WIDTH) + 1):
-        #     for y in range(int(self.pacman.rect.top / TILE_HEIGHT), int(self.pacman.rect.bottom / TILE_HEIGHT) + 1):
-        #         if 0 <= x < len(self.pacman.board[0]) and 0 <= y < len(self.pacman.board):
-        #             if self.pacman.board[y][x] == 1: # Vérifier si le fantôme touche un mur
-        #                 return False
-        # return True
         
     def update(self):
         for ghost in self.ghosts:
