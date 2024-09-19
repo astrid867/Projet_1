@@ -46,6 +46,7 @@ class Ghost:
                 # TODO: Si aucune collision n'est détectée, mettre à jour la position du fantôme
                 self.pos[0]=next_x
                 self.pos[1]=next_y
+                self.rect.topleft = self.pos
                 # TODO: Changer la direction du fantôme s'il rencontre un mur
             else:
                 self.change_direction()
