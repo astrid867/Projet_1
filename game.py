@@ -86,11 +86,11 @@ class Game:
 
         # Draw the number of lives
         lives_text = self.font.render("Lives: ", True, (255, 255, 255))
-        self.screen.blit(lives_text, (50, 50 * 15))
+        self.screen.blit(lives_text, (50, 50 * 0))
 
         pacman_image = pygame.transform.scale(pygame.image.load('assets/images/pacman.png'), (30, 30))
         for i in range(self.pacman.lives):
-            self.screen.blit(pacman_image, (150 + i * 40, 50 * 15))
+            self.screen.blit(pacman_image, (150 + i * 40, 50 * 0))
 
     def handle_keypress(self, event):
         # TODO: Vérifiez si la touche pressée est la flèche droite avec event.key == pygame.K_RIGHT
@@ -153,25 +153,31 @@ class Game:
 
     def check_score(self):
         # TODO: Vérifier si la position actuelle de Pac-Man (en coordonnées de grille) correspond à une position de pièce en utilisant (self.pacman.x, self.pacman.y)
-            # TODO: Si Pac-Man est sur une pièce, la retirer de la liste des pièces restantes à collecter 
-
+        x = self.pacman.x
+        y = self.pacman.y
+        
+        # TODO: Si Pac-Man est sur une pièce, la retirer de la liste des pièces restantes à collecter 
+        if (x,y) in self.coins :
+            self.coins.remove((x,y))
             # TODO: Ajouter des points au score du joueur pour la pièce collectée (par exemple, 10 points)
-
+            self.score += 10
+            
         if len(self.coins) == 0:
             self.end.render(True)
             self.game_won = True
             self.game_over = True
 
     def check_special_coins(self):
-        pass
         # TODO: Vérifier si la position actuelle de Pac-Man (en coordonnées de grille) correspond à une position de pièce spéciale
-
+        x = self.pacman.x
+        y = self.pacman.y
+        if (x,y) in self.special_coins :
             # TODO: Si Pac-Man est sur une pièce spéciale, retirer cette pièce spéciale de la liste
-            
+            self.special_coins.remove((x,y))
             # TODO: Ajouter des points au score du joueur pour la pièce spéciale collectée
-            
+            self.score += 100
             # TODO: Activer le mode "manger" en appelant la méthode appropriée pour activer le mode "manger" des fantômes avec self.activate_eat_mode()
-
+            self.activate_eat_mode()
 
     def activate_eat_mode(self):
         timer = threading.Timer(EDIBLE_GHOST_TIMER, self.deactivate_eat_mode)
