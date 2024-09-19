@@ -64,8 +64,8 @@ class PacMan:
                 # TODO: Mettre à jour la position du rectangle de Pac-Man dans l'interface
                 # Mettre à jour `self.rect.topleft` avec la nouvelle position à l'écran pour déplacer l'affichage de Pac-Man.
                 self.rect.topleft = self.screen_pos
-            else:
-                self.stop()
+            # else:
+            #     self.stop()
                 
                 
     def set_direction(self, direction):
