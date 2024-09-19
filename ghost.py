@@ -29,7 +29,6 @@ class Ghost:
     def move(self):
         # Si le fantôme n'est pas "mort", commencez le calcul de sa prochaine position
         if not self.dead:
-            pass
             # TODO: Calculer la prochaine position en fonction de la direction et de la vitesse
             # Utilisez `self.direction` pour déterminer la direction et `self.speed` pour le déplacement.
             # La formule pour calculer la prochaine position est la suivante:
@@ -43,7 +42,7 @@ class Ghost:
 
             # TODO Vérifier si la prochaine position entre en collision avec un mur
             # Utilisez `self.check_collision()` pour détecter si le fantôme va heurter un mur.
-            if self.check_collision(next_rect)
+            if not self.check_collision(next_rect):
                 # TODO: Si aucune collision n'est détectée, mettre à jour la position du fantôme
                 self.pos[0]=next_x
                 self.pos[1]=next_y
@@ -69,8 +68,8 @@ class Ghost:
             for y in range(int(rect.top / TILE_HEIGHT), int(rect.bottom / TILE_HEIGHT) + 1):
                 if 0 <= x < len(self.maze[0]) and 0 <= y < len(self.maze):
                     if self.maze[y][x] == 1: # Vérifier si le fantôme touche un mur
-                        return True
-        return False
+                        return True     #Il y a collision
+        return False      #Pas de collision
 
     def die(self):
         self.dead = True
@@ -78,23 +77,25 @@ class Ghost:
 
     def change_direction(self):
         # TODO: Créer une liste de toutes les directions possibles pour le fantôme (gauche, droite, haut, bas)
-        directions = [(1,0),(-1,0),(0,1),(0,-1)]
+        directions = [Direction.UP,Direction.DOWN,Direction.LEFT,Direction.RIGHT]  #on utilise les directions de config et pas (0,1)....
         
         # TODO: Mélanger aléatoirement les directions pour simuler un choix aléatoire avec `random.shuffle()`
         random.shuffle(directions)
         
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
+        for D in directions:
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
+            next_x = self.pos[0] + D[0]
+            next_y = self.pos[1] + D[1]
             
-    #je comprends pas pourquoi on fait ça pour chaque direction puisqu'on va checker après pour une seule qu'on aura choisie
-            
-            
-            #ßCréer un rectangle représentant cette nouvelle position
-        next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])   #était en commentaire avant...
+            #Créer un rectangle représentant cette nouvelle position
+            next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
             
             # TODO: Vérifier si cette direction entraîne une collision avec un mur en utilisant `self.check_collision()`
+            if not self.check_collision(next_rect):
                 # TODO: Si aucune collision n'est détectée, définir cette direction comme la nouvelle direction du fantôme avec `self.set_direction()` et sortir de la boucle
-        return  # Sortir de la méthode une fois la direction changée
+                self.direction = D
+          # Sortir de la méthode une fois la direction changée
 
     def stop(self):
         self.direction = Direction.STOP
